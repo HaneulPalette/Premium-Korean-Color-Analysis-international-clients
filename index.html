@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Haneul Palette</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo">
+
+<h1>Premium Korean Color Analysis</h1>
+<p class="subtitle">Upload one clear selfie in natural light</p>
+
+<input type="file" id="imageInput" accept="image/*">
+
+<button onclick="analyzeImage()">Analyze My Face</button>
+
+<div id="loading" class="hidden">Analyzing...</div>
+
+<div id="results" class="hidden">
+
+<h2>Your Preview Results</h2>
+
+<p><b>Analysis ID:</b> <span id="analysisId"></span></p>
+
+<div id="analysisText"></div>
+
+<div id="paymentSection">
+
+<h3>Unlock Full Premium Report</h3>
+<p class="price">$34.99</p>
+
+<img src="paypal-qr.png" class="qr">
+
+<button onclick="openForm()">Submit Payment Proof</button>
+
+<p class="note">
+After verification, your luxury PDF report will be sent to your email.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
