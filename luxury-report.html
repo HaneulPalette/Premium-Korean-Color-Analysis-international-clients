@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Noto+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+body { margin:0; background:#f5f3ef; font-family:'Noto Sans'; }
+
+.page { width:800px; margin:auto; background:white; padding:50px; }
+
+.header { text-align:center; }
+
+.logo { width:80px; }
+
+.title { font-family:'Playfair Display'; font-size:32px; }
+
+.section { margin-top:30px; }
+
+.section-title { border-bottom:1px solid #eee; }
+
+.card { background:#fafafa; padding:15px; border-radius:10px; }
+
+.palette { display:flex; gap:10px; }
+
+.color { width:60px; height:60px; border-radius:8px; }
+</style>
+</head>
+
+<body>
+
+<div id="report" class="page">
+
+<div class="header">
+<img src="logo.png" class="logo">
+<div class="title">HANEUL PALETTE</div>
+</div>
+
+<div class="section">
+<div class="section-title">Client Profile</div>
+<div class="card">
+Name: <span id="name"></span><br>
+Undertone: <span id="undertone"></span><br>
+Brightness: <span id="brightness"></span><br>
+Depth: <span id="depth"></span>
+</div>
+</div>
+
+<div class="section">
+<div class="section-title">Recommended Palette</div>
+<div class="palette" id="palette"></div>
+</div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+document.getElementById("name").innerText = params.get("name") || "Client";
+document.getElementById("undertone").innerText = params.get("undertone");
+document.getElementById("brightness").innerText = params.get("brightness");
+document.getElementById("depth").innerText = params.get("depth");
+
+const colors = ["#C2A083","#E6C7A8","#A67B5B"];
+
+let palette = document.getElementById("palette");
+colors.forEach(c=>{
+ let d=document.createElement("div");
+ d.className="color";
+ d.style.background=c;
+ palette.appendChild(d);
+});
+
+setTimeout(()=>{
+ html2pdf().from(document.getElementById("report")).save("Haneul_Report.pdf");
+},1000);
+</script>
+
+</body>
+</html>
